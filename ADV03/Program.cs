@@ -104,49 +104,90 @@
 
             #region Exercise 3: Phone Book
 
-            Dictionary<string, string> phoneBook = new Dictionary<string, string>();
+            //Dictionary<string, string> phoneBook = new Dictionary<string, string>();
 
-            phoneBook.Add("Ahmed", "111");
-            phoneBook.Add("Sara", "222");
-            phoneBook.Add("Ali", "333");
-            phoneBook.Add("Mona", "444");
+            //phoneBook.Add("Ahmed", "111");
+            //phoneBook.Add("Sara", "222");
+            //phoneBook.Add("Ali", "333");
+            //phoneBook.Add("Mona", "444");
 
-            // [] syntax
-            phoneBook["Ahmed"] = "999";
+            //// [] syntax
+            //phoneBook["Ahmed"] = "999";
 
-            // Add duplicate
-            try
-            {
-                phoneBook.Add("Ahmed", "000");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
+            //// Add duplicate
+            //try
+            //{
+            //    phoneBook.Add("Ahmed", "000");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Error: {ex.Message}");
+            //}
 
-            // TryAdd
-            bool added = phoneBook.TryAdd("Ahmed", "000");
-            Console.WriteLine($"TryAdd success: {added}");
+            //// TryAdd
+            //bool added = phoneBook.TryAdd("Ahmed", "000");
+            //Console.WriteLine($"TryAdd success: {added}");
 
-            // Search non-existing
-            Console.WriteLine(phoneBook.ContainsKey("Omar"));
+            //// Search non-existing
+            //Console.WriteLine(phoneBook.ContainsKey("Omar"));
 
-            // Get with fallback
-            string value;
-            if (!phoneBook.TryGetValue("Omar", out value))
-                value = "Not Found";
+            //// Get with fallback
+            //string value;
+            //if (!phoneBook.TryGetValue("Omar", out value))
+            //    value = "Not Found";
 
-            Console.WriteLine(value);
+            //Console.WriteLine(value);
 
-            Console.WriteLine("Keys:");
-            foreach (var k in phoneBook.Keys)
-                Console.Write(k + " ");
+            //Console.WriteLine("Keys:");
+            //foreach (var k in phoneBook.Keys)
+            //    Console.Write(k + " ");
 
-            Console.WriteLine("\nValues:");
-            foreach (var v in phoneBook.Values)
-                Console.Write(v + " ");
+            //Console.WriteLine("\nValues:");
+            //foreach (var v in phoneBook.Values)
+            //    Console.Write(v + " ");
 
             #endregion
+
+            #region Exercise 4: HashSet
+
+            HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            emails.Add("ahmed@test.com");
+            emails.Add("AHMED@test.com");
+            emails.Add("sara@test.com");
+            emails.Add("Sara@Test.Com");
+
+            Console.WriteLine($"\nUnique Emails Count = {emails.Count}");
+            // Explanation: Case-insensitive → duplicates removed
+
+            HashSet<int> setA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            HashSet<int> setB = new HashSet<int> { 4, 5, 6, 7, 8 };
+
+            HashSet<int> union = new HashSet<int>(setA);
+            union.UnionWith(setB);
+
+            Console.WriteLine("Union:");
+            foreach (var i in union)
+                Console.Write(i + " ");
+
+            HashSet<int> intersect = new HashSet<int>(setA);
+            intersect.IntersectWith(setB);
+
+            Console.WriteLine("\nIntersect:");
+            foreach (var i in intersect)
+                Console.Write(i + " ");
+
+            HashSet<int> except = new HashSet<int>(setA);
+            except.ExceptWith(setB);
+
+            Console.WriteLine("\nExcept:");
+            foreach (var i in except)
+                Console.Write(i + " ");
+
+            Console.WriteLine($"\nIsSubset: {new HashSet<int> { 1, 2 }.IsSubsetOf(setA)}");
+
+            #endregion
+
 
         }
     }
