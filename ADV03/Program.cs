@@ -191,29 +191,56 @@
 
             #region Exercise 5: Queue
 
-            Queue<string> queue = new Queue<string>();
+            //Queue<string> queue = new Queue<string>();
 
-            queue.Enqueue("Report.pdf");
-            queue.Enqueue("Invoice.pdf");
-            queue.Enqueue("Letter.docx");
-            queue.Enqueue("Resume.pdf");
-            queue.Enqueue("Photo.jpg");
+            //queue.Enqueue("Report.pdf");
+            //queue.Enqueue("Invoice.pdf");
+            //queue.Enqueue("Letter.docx");
+            //queue.Enqueue("Resume.pdf");
+            //queue.Enqueue("Photo.jpg");
 
-            Console.WriteLine("\nQueue:");
-            foreach (var q in queue)
-                Console.WriteLine(q);
+            //Console.WriteLine("\nQueue:");
+            //foreach (var q in queue)
+            //    Console.WriteLine(q);
 
-            Console.WriteLine($"Count = {queue.Count}");
+            //Console.WriteLine($"Count = {queue.Count}");
 
-            Console.WriteLine($"Next: {queue.Peek()}");
+            //Console.WriteLine($"Next: {queue.Peek()}");
 
-            while (queue.Count > 0)
+            //while (queue.Count > 0)
+            //{
+            //    Console.WriteLine($"Printing: {queue.Dequeue()}");
+            //}
+
+            //if (!queue.TryDequeue(out string doc))
+            //    Console.WriteLine("Queue is empty");
+
+            #endregion
+
+            #region Exercise 6: Stack
+
+            Stack<string> history = new Stack<string>();
+
+            history.Push("google.com");
+            history.Push("github.com");
+            history.Push("stackoverflow.com");
+            history.Push("youtube.com");
+            history.Push("claude.ai");
+
+            Console.WriteLine($"\nCurrent: {history.Peek()}");
+
+            for (int i = 0; i < 3; i++)
             {
-                Console.WriteLine($"Printing: {queue.Dequeue()}");
+                Console.WriteLine($"Back from: {history.Pop()}");
             }
 
-            if (!queue.TryDequeue(out string doc))
-                Console.WriteLine("Queue is empty");
+            Console.WriteLine($"Current after back: {history.Peek()}");
+
+            // Empty stack test
+            Stack<string> empty = new Stack<string>();
+
+            if (!empty.TryPop(out string url))
+                Console.WriteLine("Stack is empty");
 
             #endregion
 
