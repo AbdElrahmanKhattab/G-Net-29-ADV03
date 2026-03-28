@@ -150,41 +150,70 @@
 
             #region Exercise 4: HashSet
 
-            HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            //HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            emails.Add("ahmed@test.com");
-            emails.Add("AHMED@test.com");
-            emails.Add("sara@test.com");
-            emails.Add("Sara@Test.Com");
+            //emails.Add("ahmed@test.com");
+            //emails.Add("AHMED@test.com");
+            //emails.Add("sara@test.com");
+            //emails.Add("Sara@Test.Com");
 
-            Console.WriteLine($"\nUnique Emails Count = {emails.Count}");
-            // Explanation: Case-insensitive → duplicates removed
+            //Console.WriteLine($"\nUnique Emails Count = {emails.Count}");
+            //// Explanation: Case-insensitive → duplicates removed
 
-            HashSet<int> setA = new HashSet<int> { 1, 2, 3, 4, 5 };
-            HashSet<int> setB = new HashSet<int> { 4, 5, 6, 7, 8 };
+            //HashSet<int> setA = new HashSet<int> { 1, 2, 3, 4, 5 };
+            //HashSet<int> setB = new HashSet<int> { 4, 5, 6, 7, 8 };
 
-            HashSet<int> union = new HashSet<int>(setA);
-            union.UnionWith(setB);
+            //HashSet<int> union = new HashSet<int>(setA);
+            //union.UnionWith(setB);
 
-            Console.WriteLine("Union:");
-            foreach (var i in union)
-                Console.Write(i + " ");
+            //Console.WriteLine("Union:");
+            //foreach (var i in union)
+            //    Console.Write(i + " ");
 
-            HashSet<int> intersect = new HashSet<int>(setA);
-            intersect.IntersectWith(setB);
+            //HashSet<int> intersect = new HashSet<int>(setA);
+            //intersect.IntersectWith(setB);
 
-            Console.WriteLine("\nIntersect:");
-            foreach (var i in intersect)
-                Console.Write(i + " ");
+            //Console.WriteLine("\nIntersect:");
+            //foreach (var i in intersect)
+            //    Console.Write(i + " ");
 
-            HashSet<int> except = new HashSet<int>(setA);
-            except.ExceptWith(setB);
+            //HashSet<int> except = new HashSet<int>(setA);
+            //except.ExceptWith(setB);
 
-            Console.WriteLine("\nExcept:");
-            foreach (var i in except)
-                Console.Write(i + " ");
+            //Console.WriteLine("\nExcept:");
+            //foreach (var i in except)
+            //    Console.Write(i + " ");
 
-            Console.WriteLine($"\nIsSubset: {new HashSet<int> { 1, 2 }.IsSubsetOf(setA)}");
+            //Console.WriteLine($"\nIsSubset: {new HashSet<int> { 1, 2 }.IsSubsetOf(setA)}");
+
+            #endregion
+
+
+            #region Exercise 5: Queue
+
+            Queue<string> queue = new Queue<string>();
+
+            queue.Enqueue("Report.pdf");
+            queue.Enqueue("Invoice.pdf");
+            queue.Enqueue("Letter.docx");
+            queue.Enqueue("Resume.pdf");
+            queue.Enqueue("Photo.jpg");
+
+            Console.WriteLine("\nQueue:");
+            foreach (var q in queue)
+                Console.WriteLine(q);
+
+            Console.WriteLine($"Count = {queue.Count}");
+
+            Console.WriteLine($"Next: {queue.Peek()}");
+
+            while (queue.Count > 0)
+            {
+                Console.WriteLine($"Printing: {queue.Dequeue()}");
+            }
+
+            if (!queue.TryDequeue(out string doc))
+                Console.WriteLine("Queue is empty");
 
             #endregion
 
