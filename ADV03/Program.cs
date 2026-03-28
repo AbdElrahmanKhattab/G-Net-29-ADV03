@@ -72,35 +72,81 @@
 
             #region Exercise 2: Leaderboard
 
-            SortedList<int, string> leaderboard = new SortedList<int, string>();
+            //SortedList<int, string> leaderboard = new SortedList<int, string>();
 
-            leaderboard.Add(500, "Ahmed");
-            leaderboard.Add(200, "Sara");
-            leaderboard.Add(800, "Ali");
-            leaderboard.Add(350, "Mona");
+            //leaderboard.Add(500, "Ahmed");
+            //leaderboard.Add(200, "Sara");
+            //leaderboard.Add(800, "Ali");
+            //leaderboard.Add(350, "Mona");
 
-            Console.WriteLine("\nLeaderboard:");
-            foreach (var item in leaderboard)
-                Console.WriteLine($"{item.Key} = {item.Value}");
+            //Console.WriteLine("\nLeaderboard:");
+            //foreach (var item in leaderboard)
+            //    Console.WriteLine($"{item.Key} = {item.Value}");
 
-            Console.WriteLine($"First Key: {leaderboard.Keys[0]}");
-            Console.WriteLine($"First Value: {leaderboard.Values[0]}");
+            //Console.WriteLine($"First Key: {leaderboard.Keys[0]}");
+            //Console.WriteLine($"First Value: {leaderboard.Values[0]}");
 
-            Console.WriteLine($"Contains 500: {leaderboard.ContainsKey(500)}");
+            //Console.WriteLine($"Contains 500: {leaderboard.ContainsKey(500)}");
 
-            if (leaderboard.TryGetValue(999, out string player))
-                Console.WriteLine(player);
-            else
-                Console.WriteLine("Score 999 not found");
+            //if (leaderboard.TryGetValue(999, out string player))
+            //    Console.WriteLine(player);
+            //else
+            //    Console.WriteLine("Score 999 not found");
 
-            leaderboard.Remove(200);
+            //leaderboard.Remove(200);
 
-            Console.WriteLine("After Remove:");
-            foreach (var item in leaderboard)
-                Console.WriteLine($"{item.Key} = {item.Value}");
+            //Console.WriteLine("After Remove:");
+            //foreach (var item in leaderboard)
+            //    Console.WriteLine($"{item.Key} = {item.Value}");
 
             #endregion
 
+
+            #region Exercise 3: Phone Book
+
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>();
+
+            phoneBook.Add("Ahmed", "111");
+            phoneBook.Add("Sara", "222");
+            phoneBook.Add("Ali", "333");
+            phoneBook.Add("Mona", "444");
+
+            // [] syntax
+            phoneBook["Ahmed"] = "999";
+
+            // Add duplicate
+            try
+            {
+                phoneBook.Add("Ahmed", "000");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            // TryAdd
+            bool added = phoneBook.TryAdd("Ahmed", "000");
+            Console.WriteLine($"TryAdd success: {added}");
+
+            // Search non-existing
+            Console.WriteLine(phoneBook.ContainsKey("Omar"));
+
+            // Get with fallback
+            string value;
+            if (!phoneBook.TryGetValue("Omar", out value))
+                value = "Not Found";
+
+            Console.WriteLine(value);
+
+            Console.WriteLine("Keys:");
+            foreach (var k in phoneBook.Keys)
+                Console.Write(k + " ");
+
+            Console.WriteLine("\nValues:");
+            foreach (var v in phoneBook.Values)
+                Console.Write(v + " ");
+
+            #endregion
 
         }
     }
